@@ -1,0 +1,126 @@
+.form {
+  width: 600px;
+
+  &__wrap {
+    border: 1px solid @border;
+    padding: 30px;
+    border-radius: 20px;
+    background-color: fade(@violet, 10);
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(220, 223, 230, 0.8);
+    -moz-box-shadow: 0px 0px 8px 0px rgba(220, 223, 230, 0.8);
+    box-shadow: 0px 0px 8px 0px rgba(220, 223, 230, 0.8);
+  }
+
+  &__select {
+    margin-bottom: 25px;
+  }
+
+  &__input {
+    width: 100%;
+    margin: 0 0 25px;
+  }
+
+  &__warning {
+    background-color: red;
+    color: white;
+    padding: 15px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: 35px;
+    color: @violet;
+  }
+
+  &__fieldset {
+    border: 0;
+    padding: 0;
+  }
+
+  &__btn {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__links {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  &__link {
+    color: @white;
+    text-decoration: underline;
+  }
+
+  &--inner {
+    width: 100%;
+
+    .form {
+      &__input {
+        width: calc(100% - 20px);
+        margin: 0 10px 10px;
+      }
+
+      &__fieldset {
+        width: 100%;
+      }
+    }
+  }
+
+  &__main {
+    display: flex; 
+  }
+
+  &__body {
+    width: calc(100% - 250px);
+    padding-left: 50px;
+  }
+
+  &__avatar {
+    width: 250px;
+    position: relative;
+
+    &-input {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    &-wrap {
+      background-color: rgba(77, 6, 144, 0.4);
+      height: 250px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      overflow: hidden;
+
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &-text {
+      text-align: center;
+    }
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    margin: 0 -10px -10px;
+    width: calc(100% + 20px);
+  }
+}

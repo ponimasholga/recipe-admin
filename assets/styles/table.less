@@ -1,0 +1,94 @@
+.table {
+  &__head {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ebeef5;
+    color: #909399;
+    padding: 10px 0;
+  }
+
+  &__control {
+    display: flex;
+    align-items: center;
+    gap: 4px
+  }
+
+  &__block {
+    padding-left: 50px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--color-primary);
+    margin-bottom: 20px;
+
+    h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ebeef5;
+    color: #909399;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  &__flag {
+    width: 40px;
+    height: auto;
+  }
+
+  &__author {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    &-avatar {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+
+  &__id {
+    padding: 0 10px;
+    width: 60px;
+  }
+
+  &__td {
+    padding: 0 10px;
+    width: 200px;
+
+    &--flag {
+      display: flex;
+      align-items: center;
+      width: 70px
+    }
+
+    &--long {
+      width: 320px
+    }
+
+    &--banner {
+      width: 140px;
+    }
+  }
+
+  &__banner {
+    width: 80px;
+    height: 40px;
+  }
+}

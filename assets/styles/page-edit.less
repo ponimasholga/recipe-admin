@@ -1,0 +1,46 @@
+.page-edit {
+  max-width: 1000px;
+  display: flex;
+
+  &__block {
+    width: calc(100% - 450px);
+    padding-right: 15px;
+  }
+
+  &__aside {
+    width: 450px;
+    padding-left: 15px;
+
+    &-list {
+      padding: 15px;
+      border-radius: 15px;
+      border: 1px solid rgba(220, 223, 230, 0.8);
+      
+      &--column {
+        padding: 0;
+        border-radius: 0;
+        border: 0;
+      }
+    }
+  }
+
+  &__main {
+    display: flex;
+  }
+
+  &__top {
+    margin-bottom: 30px;
+  }
+
+  &__banner {
+    max-width: 450px;
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  &__textarea {
+    max-width: 450px;
+  }
+}
