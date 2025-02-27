@@ -94,7 +94,7 @@
                   {{ subCategory.title }}
                 </div>
                 <div class="table__control">
-                  <div class="table__btn table__btn--delete">
+                  <div class="table__btn table__btn--delete" @click="deleteSubcategory(subCategory.id)">
                     <el-icon :size="20">
                       <Delete />
                     </el-icon>
@@ -115,9 +115,20 @@
   import { Delete, Edit } from '@element-plus/icons-vue'
   import { useProductsStore }  from '../stores/products';
 
+
   const store = useProductsStore()
   const { fetchCategories } = store
   const { categories } = storeToRefs(store)
+
+  async function deleteSubcategory(id) {
+    console.log('deleteSubcategory', id)
+    await $fetch(`/api/product/delete-subcategory-by-id/${Number(id)}`, {
+      method: 'POST',
+      body: {
+        id: id
+      }
+    })
+  }
 
   const countSubcategory = (subCategory) => {
     return subCategory.length
