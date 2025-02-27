@@ -42,10 +42,10 @@
                 {{ category.id }}
               </div>
               <div class="table__td">
-                {{ category.name }}
+                {{ category.title }}
               </div>
               <div class="table__td">
-                {{ category.name }}
+                {{ countSubcategory(category.subCategory) }}
               </div>
               <div class="table__control">
                 <nuxt-link class="table__btn table__btn--change"  :to=urlPageDetail(category.id)>
@@ -91,7 +91,7 @@
                   {{ subCategory.id }}
                 </div>
                 <div class="table__td">
-                  {{ subCategory.name }}
+                  {{ subCategory.title }}
                 </div>
                 <div class="table__control">
                   <div class="table__btn table__btn--delete">
@@ -118,6 +118,10 @@
   const store = useProductsStore()
   const { fetchCategories } = store
   const { categories } = storeToRefs(store)
+
+  const countSubcategory = (subCategory) => {
+    return subCategory.length
+  }
 
   const urlPageDetail = (id) => {
     return `/categories/${id}`

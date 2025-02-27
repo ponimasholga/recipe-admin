@@ -5,17 +5,19 @@ const prisma = new PrismaClient()
 export default defineEventHandler(async (event) => {
 
   const body = await readBody(event)
-  let updateCategory = null
+  console.log('body' ,body)
+  let newCategory = null
 
-  if  (body.name) {
-    updateCategory = await prisma.category.create({
+  if  (body.title) {
+    newCategory = await prisma.category.create({
       data: {
-        name: body.name,
+        title: body.title,
       }
     })
   }
 
+  console.log('newCategory' ,newCategory)
   return {
-    updateCategory
+    newCategory
   }
 })

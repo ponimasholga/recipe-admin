@@ -7,7 +7,7 @@
           type="text"
           label="Название"
           placeholder="Пример: Бакалея"
-          name="name"
+          name="title"
           class="category-form__input"
         />
       </div>
@@ -34,9 +34,6 @@
   const { values, errors , handleSubmit} =  useForm({
     validationSchema: yup.object({
       title: yup.string().required('Поле «Название» обязательно для заполнения').max(1000000),
-      text: yup.string().required('Поле «Логин» обязательно для заполнения').max(1000000),
-      email: yup.string().required('Поле «E-mail» обязательно для заполнения').email('Поле «E-mail» должно быть действительным электронным адресом').max(100),
-      password: yup.string().required('Поле «Пароль» обязательно для заполнения').min(6, 'Поле «Пароль» должно быть не менее 6 символов'),
     }),
   });
 
@@ -49,7 +46,7 @@
     await $fetch('/api/product/category', {
       method: 'POST',
       body: {
-        name: values.name,
+        title: values.title,
       }
     })
 

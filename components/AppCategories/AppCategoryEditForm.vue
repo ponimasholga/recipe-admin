@@ -2,16 +2,12 @@
   <div class="page-edit">
     <div class="page-edit__block">
       <form class="category-form">
-        values - {{values }}
-        currentCategory - {{ currentCategory }}
-
-        initialValues - {{ initialValues }}
         <div class="category-form__row">
           <Input
             type="text"
             label="Название"
             placeholder="Пример: Бакалея"
-            name="name"
+            name="title"
             class="category-form__input"
           />
         </div>
@@ -30,17 +26,17 @@
     </div>
     <div class="page-edit__aside">
       <h2>Подкатегории</h2>
-      {{ currentCategory.subCategory }}
       <div class="page-edit__aside-list page-edit__aside-list--column">
         <div 
           v-for="(subCategory, index) in currentCategory.subCategory"
           :key="index"
         >
-        {{ subCategory }}
-        <AppTag 
+          <AppTag 
             :number="index+1"
             :item="subCategory"
-            type="full"
+            :link="isLink"
+            mode="full"
+            type="active"
           />
         </div>  
       </div>
@@ -55,6 +51,8 @@
   import AppTag from '../../components/AppELement/AppTag.vue';
   import { useProductsStore }  from '../stores/products';
 
+  const isLink = ref(false)
+
   const props = defineProps({
     idPage: {
       type: Number,
@@ -67,13 +65,13 @@
   const { currentCategory } = storeToRefs(store)
 
   const initialValues = ref ({
-    name: currentCategory.value.name,
+    title: currentCategory.title,
   })
 
   const { values, errors } =  useForm({
     initialValues,
     validationSchema: yup.object({
-      name: yup.string().required('Поле «Назваие» обязательно для заполнения').max(100),
+      title: yup.string().required('Поле «Назваие» обязательно для заполнения').max(100),
     }),
   });
 
