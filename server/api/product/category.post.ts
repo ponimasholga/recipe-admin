@@ -1,23 +1,33 @@
-import { PrismaClient } from "@prisma/client"
+import { PrismaClient, Prisma } from "@prisma/client";
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
 export default defineEventHandler(async (event) => {
 
-  const body = await readBody(event)
-  console.log('body' ,body)
-  let newCategory = null
+  const body = await readBody(event);
 
-  if  (body.title) {
-    newCategory = await prisma.category.create({
+  let newCategory = null;
+ 
+  await prisma.category
+    .create({
       data: {
         title: body.title,
-      }
+      },
     })
-  }
-
-  console.log('newCategory' ,newCategory)
-  return {
-    newCategory
-  }
-})
+    .then((response) => {
+      newCategory = response;
+    })
+    .catch((error) => {
+      console.log('errornewCategory', error)
+      if (error instanceof Prisma.PrismaClientKnownRequestError) {
+        if (error.code === "P2002") {
+          error = createError({
+            statusCode: 500,
+            statusMessage: `Категория с названием '${body.title}' существует`,
+          }); 
+        }
+      }
+      throw error;
+    });
+  return newCategory;
+});

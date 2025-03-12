@@ -12,7 +12,7 @@ datasource db {
 
 model Category {
   id           Int    @id @map("_id") @default(autoincrement())
-  title        String
+  title        String @unique
   subCategory    SubCategory[]
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt

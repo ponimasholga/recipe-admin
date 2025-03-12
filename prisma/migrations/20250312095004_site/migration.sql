@@ -122,6 +122,9 @@ CREATE TABLE "_ArticleToTag" (
 );
 
 -- CreateIndex
+CREATE UNIQUE INDEX "Category_title_key" ON "Category"("title");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex

@@ -23,7 +23,7 @@
   import AppHeading from '../components/AppELement/AppHeading.vue'
   import AppCategoryEditForm from '../components/AppCategories/AppCategoryEditForm.vue'
 
-  const title="Ркдактировать категорию"
+  const title="Редактировать категорию"
 
   const route = useRoute()
   const idPage = Number(route.params.id)

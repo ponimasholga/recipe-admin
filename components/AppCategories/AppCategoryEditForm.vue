@@ -2,12 +2,15 @@
   <div class="page-edit">
     <div class="page-edit__block">
       <form class="category-form">
+        values - {{ values }}<br>
+        initialValues.title - {{ initialValues.title }}<br>
+        currentCategory.title - {{ currentCategory.title }}
         <div class="category-form__row">
           <Input
             type="text"
             label="Название"
             placeholder="Пример: Бакалея"
-            name="title"
+            :name="currentCategory.title"
             class="category-form__input"
           />
         </div>
@@ -51,6 +54,8 @@
   import AppTag from '../../components/AppELement/AppTag.vue';
   import { useProductsStore }  from '../stores/products';
 
+  const { isLoading, showMessage, showError , toggleLoading } = useStore();
+
   const isLink = ref(false)
 
   const props = defineProps({
@@ -60,9 +65,9 @@
     },
   })
 
-  const store = useProductsStore()
-  const { fetchCurrentCategory } = store
-  const { currentCategory } = storeToRefs(store)
+  const storeCaterogies = useProductsStore()
+  const { fetchCurrentCategory } = storeCaterogies
+  const { currentCategory } = storeToRefs(storeCaterogies)
 
   const initialValues = ref ({
     title: currentCategory.title,
