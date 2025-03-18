@@ -6,7 +6,7 @@
         initialValues.title - {{ initialValues.title }}<br>
         currentCategory.title - {{ currentCategory.title }}
         <div class="category-form__row">
-          <Input
+          <AppInput
             type="text"
             label="Название"
             placeholder="Пример: Бакалея"
@@ -50,9 +50,11 @@
 <script setup>
   import { useForm } from 'vee-validate';
   import * as yup from 'yup';
-  import Input from '../components/AppForm//Input.vue'
+  import AppInput from '../components/AppForm/AppFormElement/AppInput.vue';
   import AppTag from '../../components/AppELement/AppTag.vue';
   import { useProductsStore }  from '../stores/products';
+
+  const isEdit = ref(true)
 
   const { isLoading, showMessage, showError , toggleLoading } = useStore();
 

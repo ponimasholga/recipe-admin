@@ -3,35 +3,39 @@
     values = {{ values }}<br>
     errors = {{ errors }}
     <fieldset class="form__fieldset">
-      <Input
+      <AppInput
+        placeholder="Пример"
         type="text"
         label="Логин"
         name="username" 
         class="form__input"
       />
-
-      <Input
+      <AppInput
+        placeholder="Пример"
         type="text"
         label="Имя"
         name="name"
         class="form__input"
       />
 
-      <Input
+      <AppInput
+        placeholder="Пример"
         type="text"
         label="Телефон"
         name="phone"
         class="form__input"
       />
 
-      <Input
+      <AppInput
+        placeholder="Пример"
         type="text"
         label="E-mail"
         name="email"
         class="form__input"
       />
 
-      <Input
+      <AppInput
+        placeholder="Пример"
         type="password"
         label="Пароль"
         name="password" 
@@ -50,7 +54,7 @@
   <script setup >
   import { useForm } from 'vee-validate';
   import * as yup from 'yup';
-  import Input from '../components/AppForm//Input.vue'
+  import AppInput from '../components/AppForm/AppFormElement/AppInput.vue';
   import AppButton from '../components/AppButton.vue';
 
   

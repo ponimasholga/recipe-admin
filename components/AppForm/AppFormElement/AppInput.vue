@@ -11,7 +11,7 @@
         class="text-input"
         ref="password"
         :type="passwordFieldType"
-        :placeholder="label"
+        :placeholder="placeholder"
         v-model="value"
       >
 
@@ -19,7 +19,7 @@
         v-else
         class="text-input"
         :type="type"
-        :placeholder="label"
+        :placeholder="placeholder"
         v-model="value"
       >
       <div

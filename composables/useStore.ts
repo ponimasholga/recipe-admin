@@ -4,16 +4,18 @@ interface State {
   isLoading: boolean,
   isError: boolean,
   appError: APIError | null,
+  isAlertDialogVisible: boolean,
 }
 
 const state = reactive<State>({
   isLoading: false,
   isError: false,
-  appError: null
+  appError: null,
+  isAlertDialogVisible: false,
 })
 
 export default () => {
-  const { isLoading, appError, isError } = toRefs(state);
+  const { isLoading, appError, isError, isAlertDialogVisible } = toRefs(state);
 
   const toggleLoading = (v: boolean) => {
     state.isLoading = v;
@@ -40,6 +42,10 @@ export default () => {
     }
   }
 
+  const toggleAlertDialog = (v: boolean) => {
+    state.isAlertDialogVisible = v;
+  }
+
   return {
     isLoading,
     appError,
@@ -47,6 +53,8 @@ export default () => {
     toggleLoading,
     toggleError,
     showError,
-    showMessage
+    showMessage,
+    toggleAlertDialog,
+    isAlertDialogVisible,
   }
 }

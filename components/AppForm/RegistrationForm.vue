@@ -4,20 +4,23 @@
       <fieldset
         class="form__fieldset"
       >
-        <Input
+        <AppInput
           type="text"
           label="Email"
-          name="email" 
+          name="email"
+          placeholder="Пример"
         />
-        <Input
+        <AppInput
           type="password"
           label="Пароль"
-          name="password" 
+          name="password"
+          placeholder="Пример"
         />
-        <Input
+        <AppInput
           type="password"
           label="Подтверждение пароля"
-          name="passwordConfirm" 
+          name="passwordConfirm"
+          placeholder="Пример"
         />
       </fieldset>
 
@@ -35,7 +38,7 @@
 <script setup >
 import { useForm } from 'vee-validate';
 import * as yup from 'yup';
-import Input from '~/components/form/Input.vue'
+import AppInput from '../components/AppForm/AppFormElement/AppInput.vue';
 
 const props = defineProps({
   title: {

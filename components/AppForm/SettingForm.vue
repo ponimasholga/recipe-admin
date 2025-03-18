@@ -19,13 +19,15 @@
             </div>
 
             <div class="form__body">
-                <Input
+                <AppInput
+                  placeholder="Пример"
                   type="text"
                   label="Логин"
                   name="username" 
                   class="form__input"
                 />
-                <Input
+                <AppInput
+                  placeholder="Пример"
                   type="text"
                   label="E-mail"
                   name="email"
@@ -45,7 +47,7 @@
   <script setup >
   import { useForm } from 'vee-validate';
   import * as yup from 'yup';
-  import Input from '../components/AppForm//Input.vue'
+  import AppInput from '../components/AppForm/AppFormElement/AppInput.vue';
   import AppButton from '../components/AppButton.vue';
   import {useAuthStore} from './stores/auth'
 

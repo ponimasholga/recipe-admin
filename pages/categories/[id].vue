@@ -5,33 +5,52 @@
       description="Категории товаров"
     >
       <template #action>
-        <button class="btn btn--primary" to="/categories/new">
-          Удалить категорию
-        </button>
+        <AppButton
+          text="Удалить категорию"
+          class="btn btn--primary"
+          @click="toggleAlertDialog(true)"
+        />
       </template>
     </AppHeading>
     <template #inner>
-     <AppCategoryEditForm 
-      :idPage="idPage"
-      />
+      <AppCategoryForm/>
     </template>
+    <AppAlertDialog 
+      @on-corfirm="deleteCategory"
+    />
   </AppLayout>
 </template>
   
 <script setup>
   import AppLayout from '../../layout/AppLayout.vue'
   import AppHeading from '../components/AppELement/AppHeading.vue'
-  import AppCategoryEditForm from '../components/AppCategories/AppCategoryEditForm.vue'
+  import AppButton from '../components/AppELement/AppButton.vue'
+  import AppCategoryForm from '../components/AppCategories/AppCategoryForm.vue'
+  import AppAlertDialog from '../components/AppELement/AppAlertDialog.vue';
 
   const title="Редактировать категорию"
 
   const route = useRoute()
   const idPage = Number(route.params.id)
+
+  const { isLoading, toggleLoading, toggleAlertDialog } = useStore();
+
+  /*Удаление категории*/
+  const deleteCategory = async () => {    
+    try {
+      toggleLoading(true)
+      console.log('Удаление категории под номером № ', idPage);
+
+    } catch (error){
+
+    } finally {
+      toggleLoading(false)
+    }
+  }
+
 </script>
   
 <style lang="less" scoped>
   @import '../assets/styles/main';
-
-
 </style>
   

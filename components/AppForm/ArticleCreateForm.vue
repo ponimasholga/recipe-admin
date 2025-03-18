@@ -9,14 +9,16 @@
       selectAuthor = {{ selectAuthor }}
       selectTags = {{ selectTags }}
       <fieldset class="form__fieldset">
-        <Input
+        <AppInput
+          placeholder="Пример"
           type="text"
           label="Название"
           name="title" 
           class="form__input"
         />
   
-        <Input
+        <AppInput
+          placeholder="Пример"
           type="textarea"
           label="Описание"
           name="text"
@@ -67,7 +69,7 @@
 <script setup >
   import { useForm } from 'vee-validate';
   import * as yup from 'yup';
-  import Input from '../components/AppForm//Input.vue'
+  import AppInput from '../components/AppForm/AppFormElement/AppInput.vue';
   import AppButton from '../components/AppButton.vue';
   import AppSelect  from '../components/AppForm/AppFormElement/AppSelect.vue';
 

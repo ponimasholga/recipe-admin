@@ -32,7 +32,7 @@
 <script setup >
 import { useForm } from 'vee-validate';
 import * as yup from 'yup';
-import Input from '../components/AppForm//Input.vue'
+import AppInput from '../components/AppForm/AppFormElement/AppInput.vue';
 import AppButton from '../components/AppButton.vue';
 import { useAuthStore } from '../stores/auth'
 

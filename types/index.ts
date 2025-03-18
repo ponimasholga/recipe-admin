@@ -4,3 +4,5 @@ export type APIError = {
   message: string,
   data?: Record<string, string>
 }
+
+export type TToastStatus = "success" | "warning" | "error";
