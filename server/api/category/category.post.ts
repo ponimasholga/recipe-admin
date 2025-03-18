@@ -17,7 +17,7 @@ export default defineEventHandler(async (event) => {
     newCategory = response;
   })
   .catch((error) => {
-    console.log('errornewCategory', error)
+    console.log('errornewCategory !!!!!!!!!!!!!!!!!!!', error.code)
     if (error instanceof Prisma.PrismaClientKnownRequestError) {
       if (error.code === "P2002") {
         error = createError({

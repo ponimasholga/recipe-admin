@@ -1,13 +1,15 @@
 <template>
   <AppLayout>
-    <div>
-      <AppHeading
-        title="Добавить новую категорию"  
-        description=""
-      >
-      </AppHeading>
-      <AppCategoryForm />
-    </div>
+    <AppHeading
+      title="Добавить новую категорию"  
+      description=""
+    >
+      <template #action>
+      </template>
+    </AppHeading>
+    <template #inner>
+      <AppCategoryForm/>
+    </template>
   </AppLayout>
 </template>
   

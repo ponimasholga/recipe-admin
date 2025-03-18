@@ -13,9 +13,7 @@
   />
 </template>
 
-  
 <script setup>
-  
   const props = defineProps({
     text: {
       type: String,
@@ -29,7 +27,6 @@
       type: Boolean,
       default: false,
     }
-
   })
 </script>
   

@@ -42,8 +42,7 @@
     }
 
     &__title {
-      margin-top: 0;
-      margin-bottom: 15px;
+      margin: 0;
     }
 
     &__action {
@@ -52,7 +51,7 @@
     }
 
     &__description {
-      margin-top: 0;
+      margin-top: 15px;
       margin-bottom: 0;
     }
   }

@@ -1,7 +1,6 @@
 <template>
   <div class="page-edit">
     <div class="page-edit__block">
-
       <form @submit.prevent="onSubmit" class="category-form">
         <div class="category-form__row">
           <AppInput
@@ -26,7 +25,7 @@
     <div class="page-edit__aside">
       <h2>Подкатегории</h2>
       <div class="page-edit__aside-list page-edit__aside-list--column">
-          <div class="category-form__list" v-if="currentCategory.subCategory.length">
+         <div class="category-form__list" v-if="currentCategory">
             <div 
               v-for="(subCategory, index) in currentCategory.subCategory"
               :key="index"
@@ -66,9 +65,10 @@
   import { useToastStore } from "@/stores/toast";
 
   const toastStore = useToastStore();
+  const { isLoading, showMessage, showError , toggleLoading, isError } = useStore();
 
   const route = useRoute()
-  const idPage = Number(route.params.id)
+  const idPage = route.params.id || 0
   const isEdit = ref(true)
   const errorApi = ref()
 
@@ -77,10 +77,15 @@
   const { fetchCurrentCategory } = storeCaterogies
   const { currentCategory } = storeToRefs(storeCaterogies)
 
-  await fetchCurrentCategory(idPage)
+  if (idPage > 0) {
+    isEdit.value = true
+  } else {
+    isEdit.value = false
+  }
 
-
-  const { isLoading, showMessage, showError , toggleLoading, isError } = useStore();
+  const addSubCategory = () => {
+    //recipeIgredients.value.push(CommonService.getEmptyIngredient())
+  }
 
   /*Валидация формы*/
   const form = useForm({
@@ -88,19 +93,9 @@
       title: yup.string().required('Поле «Название» обязательно для заполнения').max(1000000),
     }),
     initialValues:currentCategory.value || {
-      name: ''
+      title: ''
     }
   })
-
-  //const { values, errors , handleSubmit} =  useForm({
-    //validationSchema: yup.object({
-      //title: yup.string().required('Поле «Название» обязательно для заполнения').max(1000000),
-    //}),
-  //});
-
-   const addSubCategory = () => {
-    //recipeIgredients.value.push(CommonService.getEmptyIngredient())
-  }
 
   /*Отправка формы*/
   const onSubmit = form.handleSubmit(async (values) => {
@@ -109,7 +104,6 @@
       console.log('Редактирование категории', values)
 
       try {
-        console.log('currentCategory.value.id', currentCategory.value.id)
         toggleLoading(true)
 
         await $fetch('/api/category/category', {
@@ -120,11 +114,13 @@
           }
         })
 
+        toastStore.success({ text: "Данные успешно сохранены" });
       } catch (error) {
         errorApi.value = handleError(error)
+        toastStore.error({ text: "Что-то пошло не так" });
         console.log(handleError(errorApi))
       } finally {
-        toastStore.success({ text: "Данные успешно сохранены" });
+
         toggleLoading(false)
       }
 
@@ -132,50 +128,26 @@
       try {
         console.log('Добавление категории', values)
 
-        await $fetch('/api/product/category', {
+        await $fetch('/api/category/category', {
           method: 'POST',
           body: {
             title: values.title,
           }
         }) 
-        
+
+        toastStore.success({ text: "Данные успешно сохранены" });
       } catch (error) {
-        errorApi.value = handleError(error)
-        console.log(handleError(errorApi))
-        toastStore.success({ text: "Такая категория существует" });
+        //errorApi.value = handleError(error)
+        //console.log(handleError(errorApi))
+        //console.log('error', error)
+        toastStore.error({ text: `категория '${values.title}' существует` });
       } finally {
         toggleLoading(false)
       }
     } 
   })
 
-
-  
-
-  async function onSubmit2() {
-    console.log('Click !!!!!!!!!!!', values)
-
-    try {
-      toggleLoading(true)
-
-      await $fetch('/api/product/category', {
-        method: 'POST',
-        body: {
-          title: values.title,
-        }
-      })
-
-      //navigateTo('/categories')
-
-    } catch (error) {
-      errorApi.value = handleError(error)
-    } finally {
-      toggleLoading(false)
-    }
-  }
-
-
-
+  await fetchCurrentCategory(idPage)
 </script>
   
 <style lang="less" scoped>

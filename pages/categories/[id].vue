@@ -2,7 +2,7 @@
   <AppLayout>
     <AppHeading
       :title="title"  
-      description="Категории товаров"
+      description=""
     >
       <template #action>
         <AppButton
@@ -22,7 +22,7 @@
 </template>
   
 <script setup>
-  import AppLayout from '../../layout/AppLayout.vue'
+  import AppLayout from '../layout/AppLayout.vue';
   import AppHeading from '../components/AppELement/AppHeading.vue'
   import AppButton from '../components/AppELement/AppButton.vue'
   import AppCategoryForm from '../components/AppCategories/AppCategoryForm.vue'
@@ -40,6 +40,11 @@
     try {
       toggleLoading(true)
       console.log('Удаление категории под номером № ', idPage);
+
+      await $fetch(`/api/category/${idPage}`, {
+        method: 'DELETE'
+      }) 
+
 
     } catch (error){
 

@@ -6,8 +6,6 @@ export default defineEventHandler(async (event) => {
 
   const body = await readBody(event)
 
-  console.log('updatedCategory', body, body.title)
-
   if (body.id) {
     const updatedCategory = await prisma.category.update({
       where: {
@@ -19,7 +17,7 @@ export default defineEventHandler(async (event) => {
     })
 
     return {
-        updatedCategory
+      updatedCategory
     }
   }
 })
